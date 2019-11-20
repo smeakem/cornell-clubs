@@ -23,6 +23,7 @@ class ClubCollectionViewCell: UICollectionViewCell {
         
         descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.lineBreakMode = .byClipping //use somewhere else 
         contentView.addSubview(descriptionLabel)
         
         setupConstraints()
@@ -35,10 +36,11 @@ class ClubCollectionViewCell: UICollectionViewCell {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            descriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
     }
     

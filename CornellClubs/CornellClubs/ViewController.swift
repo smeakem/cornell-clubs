@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         title = "Cornell Clubs"
         view.backgroundColor = .white
         
-        let club1 = Club(name: "Club 1", description: "description of club 1", categories: ["category 1", "category 2", "category 3"])
+        let club1 = Club(name: "Club 1", description: "description of club 1fxghgkhlgsdhfjgkuhlgjfhgsdhfjgkhjhkgjfhdfjgkhlikujyhtdgrshdtjrytkuyilkutjryhtergtrjtukyiutjrhtgrsdhjtkuyil", categories: ["category 1", "category 2", "category 3"])
         let club2 = Club(name: "Club 2", description: "description of club 2", categories: ["category 1", "category 2", "category 3"])
         let club3 = Club(name: "Club 3", description: "description of club 3", categories: ["category 1", "category 2", "category 3"])
         
