@@ -1,5 +1,5 @@
 import json
-from db import db, Club, Category
+from db import db, Club, Category, Member
 from flask import Flask, request
 #import os
 
@@ -28,9 +28,11 @@ def create_club():
     post_body = json.loads(request.data)
     name = post_body.get('name', '')
     description = post_body.get('description', '')
+    favorite = post_body.get('favorite', False)
     club = Club(
         name = name,
-        description = description
+        description = description,
+        favorite = favorite
     )
     db.session.add(club)
     db.session.commit()
@@ -42,6 +44,16 @@ def get_club(club_id):
     if not club:
         return json.dumps({'success': False, 'error': 'Club not found'}), 404
     return json.dumps({'success': True, 'data': club.serialize()}), 200
+
+@app.route('/api/club/<int:club_id>/', methods=['DELETE'])
+def delete_club(club_id):
+    club = Club.query.filter_by(id=club_id).first()
+    if not club:
+        return json.dumps({'success': False, 'error': 'Club not found'}), 404
+    db.session.delete(club)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': club.serialize()}), 200
+
 
 
 
