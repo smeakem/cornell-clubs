@@ -54,6 +54,21 @@ def delete_club(club_id):
     db.session.commit()
     return json.dumps({'success': True, 'data': club.serialize()}), 200
 
+@app.route('/api/club/<int:club_id>/category/', methods = ['POST'])
+def assign_category(club_id):
+    club = Club.query.filter_by(id=club_id).first()
+    if not club:
+        return json.dumps({'success': False, 'error': 'Club not found'}), 404
+    post_body= json.loads(request.data)
+    category = Category.query.filter_by(name=post_body.get('name')).first()
+    if not category:
+        category = Category(
+            name=post_body.get('name', '')
+        )
+    club.categories.append(category)
+    db.session.add(category)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': category.serialize()}), 200
 
 
 

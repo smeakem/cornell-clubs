@@ -13,7 +13,6 @@ association_table_m = db.Table('association_m', db.Model.metadata,
 )
 
 
-
 class Club(db.Model):
     __tablename__ = 'club'
     id = db.Column(db.Integer, primary_key=True)
@@ -55,7 +54,7 @@ class Category(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'clubs': [cl.serialize() for cl in self.categories]
+            #'clubs': [cl.serialize() for cl in self.clubs]
         }
 
 class Member(db.Model):
