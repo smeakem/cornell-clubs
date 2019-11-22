@@ -40,7 +40,6 @@ class Club(db.Model):
 
         }
 
-
 class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key=True)
@@ -54,7 +53,6 @@ class Category(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            #'clubs': [cl.serialize() for cl in self.clubs]
         }
 
 class Member(db.Model):
@@ -63,7 +61,10 @@ class Member(db.Model):
     name = db.Column(db.String, nullable=False)
     clubs = db.relationship('Club', secondary=association_table_m, back_populates='members')
 
-    def __init__(self):
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('name', '')
+
+    def serialize(self):
         return {
             'id': self.id,
             'name': self.name

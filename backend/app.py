@@ -1,7 +1,6 @@
 import json
 from db import db, Club, Category, Member
 from flask import Flask, request
-#import os
 
 db_filename = "todo.db"
 app = Flask(__name__)
