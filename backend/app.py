@@ -69,9 +69,21 @@ def assign_category(club_id):
     db.session.commit()
     return json.dumps({'success': True, 'data': category.serialize()}), 200
 
-
-
-
+@app.route('/api/club/<int:club_id>/member/', methods = ['POST'])
+def add_member(club_id):
+    club = Club.query.filter_by(id=club_id).first()
+    if not club:
+        return json.dumps({'success': False, 'error': 'Club not found'}), 404
+    post_body= json.loads(request.data)
+    member = Member.query.filter_by(name=post_body.get('name')).first()
+    if not member:
+        member = Member(
+            name=post_body.get('name', '')
+        )
+    club.members.append(member)
+    db.session.add(member)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': member.serialize()}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
