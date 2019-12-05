@@ -15,6 +15,12 @@ class IndClubViewController: UIViewController {
     var descriptionLabel: UILabel!
     var descriptionText: String
     let padding: CGFloat = 10
+    var isFavoriteText: String
+    var isFavoriteButton: UIButton!
+    var isFavorite: Bool
+    var isFavoriteImage: UIImageView!
+    let heartImageLength: CGFloat = 50
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +40,38 @@ class IndClubViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
+        isFavoriteButton = UIButton()
+        isFavoriteButton.setTitle(isFavoriteText, for: .normal)
+        isFavoriteButton.setTitleColor(.black, for: .normal)
+        isFavoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        isFavoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+        view.addSubview(isFavoriteButton)
+        
+        isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
+        isFavoriteImage.contentMode = .scaleAspectFit
+        if (isFavorite) {
+            isFavoriteImage.isHidden = false
+        }
+        else {
+            isFavoriteImage.isHidden = true
+        }
+        isFavoriteImage.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(isFavoriteImage)
+        
         setupConstraints()
     }
     
     init(club: Club) {
         nameText = club.name
         descriptionText = club.description
+        if (club.isFavorite) {
+            isFavorite = true
+            isFavoriteText = "Unfavorite"
+        }
+        else {
+            isFavorite = false
+            isFavoriteText = "Favorite"
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,6 +88,33 @@ class IndClubViewController: UIViewController {
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
             descriptionLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: padding)
         ])
+        NSLayoutConstraint.activate([
+            isFavoriteButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30),
+            isFavoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            isFavoriteImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            isFavoriteImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
+            isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
+            isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
+        ])
+        
+//            heartImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+//            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        
+    }
+    
+    @objc func favoriteButtonPressed() {
+        if (isFavorite) {
+            isFavorite = false
+            isFavoriteText = "Favorite"
+            isFavoriteImage.isHidden = true
+        }
+        else {
+            isFavorite = true
+            isFavoriteText = "Unfavorite"
+            isFavoriteImage.isHidden = false
+        }
         
     }
     

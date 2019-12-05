@@ -48,4 +48,5 @@ class ClubCollectionViewCell: UICollectionViewCell {
         nameLabel.text = club.name
         descriptionLabel.text = club.description
     }
+    
 }
