@@ -1,5 +1,5 @@
 import json
-from db import db, Club, Category, Member
+from db import db, Club, Category, Member, User
 from flask import Flask, request
 
 db_filename = "todo.db"
@@ -27,11 +27,9 @@ def create_club():
     post_body = json.loads(request.data)
     name = post_body.get('name', '')
     description = post_body.get('description', '')
-    favorite = post_body.get('favorite', False)
     club = Club(
         name = name,
-        description = description,
-        favorite = favorite
+        description = description
     )
     db.session.add(club)
     db.session.commit()
@@ -44,6 +42,7 @@ def get_club(club_id):
         return json.dumps({'success': False, 'error': 'Club not found'}), 404
     return json.dumps({'success': True, 'data': club.serialize()}), 200
 
+
 @app.route('/api/club/<int:club_id>/', methods=['DELETE'])
 def delete_club(club_id):
     club = Club.query.filter_by(id=club_id).first()
@@ -52,6 +51,7 @@ def delete_club(club_id):
     db.session.delete(club)
     db.session.commit()
     return json.dumps({'success': True, 'data': club.serialize()}), 200
+
 
 @app.route('/api/club/<int:club_id>/category/', methods = ['POST'])
 def assign_category(club_id):
@@ -69,6 +69,7 @@ def assign_category(club_id):
     db.session.commit()
     return json.dumps({'success': True, 'data': category.serialize()}), 200
 
+
 @app.route('/api/club/<int:club_id>/member/', methods = ['POST'])
 def add_member(club_id):
     club = Club.query.filter_by(id=club_id).first()
@@ -84,6 +85,46 @@ def add_member(club_id):
     db.session.add(member)
     db.session.commit()
     return json.dumps({'success': True, 'data': member.serialize()}), 200
+
+
+@app.route('/api/users/', methods = ['POST'])
+def create_user():
+    post_body = json.loads(request.data)
+    name = post_body.get('name', '')
+    user = User(
+        name = name
+    )
+    db.session.add(user)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': user.serialize()}), 200
+
+
+@app.route('/api/club/<int:club_id>/favorite/<int:user_id>/', methods = ['POST'])
+def favorite_a_club(club_id, user_id):
+    club = Club.query.filter_by(id=club_id).first()
+    if not club:
+        return json.dumps({'success': False, 'error': 'Club not found'}), 404
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return json.dumps({'success': False, 'error': 'User not found'}), 404
+    user.clubs.append(club)
+    db.session.add(club)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': user.serialize()}), 200
+
+@app.route('/api/club/<int:club_id>/unfavorite/<int:user_id>/', methods = ['POST'])
+def unfavorite_a_club(club_id, user_id):
+    club = Club.query.filter_by(id=club_id).first()
+    if not club:
+        return json.dumps({'success': False, 'error': 'Club not found'}), 404
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return json.dumps({'success': False, 'error': 'User not found'}), 404
+    user.clubs.remove(club)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': user.serialize()}), 200
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
