@@ -15,6 +15,9 @@ with app.app_context():
 
 
 @app.route('/')
+def hello_world():
+ return "Hello World!", 200
+
 @app.route('/api/clubs/')
 def get_clubs():
     clubs = Club.query.all()
@@ -123,6 +126,15 @@ def unfavorite_a_club(club_id, user_id):
     user.clubs.remove(club)
     db.session.commit()
     return json.dumps({'success': True, 'data': user.serialize()}), 200
+
+@app.route('/api/favorites/user/<int:user_id>/')
+def get_favorites(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return json.dumps({'success': False, 'error': 'User not found'}), 404
+    return json.dumps({'success': True, 'data': user.serialize()}), 200
+
+
 
 
 
