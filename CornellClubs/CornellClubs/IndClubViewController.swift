@@ -54,16 +54,16 @@ class IndClubViewController: UIViewController {
         isFavoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
         view.addSubview(isFavoriteButton)
         
-        isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
-        isFavoriteImage.contentMode = .scaleAspectFit
-        if (isFavorite) {
-            isFavoriteImage.isHidden = false
-        }
-        else {
-            isFavoriteImage.isHidden = true
-        }
-        isFavoriteImage.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(isFavoriteImage)
+//        isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
+//        isFavoriteImage.contentMode = .scaleAspectFit
+//        if (isFavorite) {
+//            isFavoriteImage.isHidden = false
+//        }
+//        else {
+//            isFavoriteImage.isHidden = true
+//        }
+//        isFavoriteImage.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(isFavoriteImage)
         
         setupConstraints()
     }
@@ -71,14 +71,14 @@ class IndClubViewController: UIViewController {
     init(club: Club) {
         nameText = club.name
         descriptionText = club.description
-        if (club.isFavorite) {
+//        if (club.isFavorite) {
             isFavorite = true
             isFavoriteText = "Unfavorite"
-        }
-        else {
-            isFavorite = false
-            isFavoriteText = "Favorite"
-        }
+//        }
+//        else {
+//            isFavorite = false
+//            isFavoriteText = "Favorite"
+//        }
         super.init(nibName: nil, bundle: nil)
     }
     
