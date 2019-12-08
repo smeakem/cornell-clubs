@@ -99,12 +99,12 @@ class IndClubViewController: UIViewController {
             isFavoriteButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30),
             isFavoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        NSLayoutConstraint.activate([
-            isFavoriteImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            isFavoriteImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
-            isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
-            isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
-        ])
+//        NSLayoutConstraint.activate([
+//            isFavoriteImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+//            isFavoriteImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
+//            isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
+//            isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
+//        ])
         
 //            heartImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 //            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
