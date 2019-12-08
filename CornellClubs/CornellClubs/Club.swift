@@ -11,13 +11,17 @@ import Foundation
 class Club {
     var name: String!
     var description: String!
+    var categories: [Category]!
+    var members: [Member]!
+    //GET RID OF ISFAVORITE
     var isFavorite: Bool!
     //var categories: [String]!
 
-    init(name: String, description: String, categories: [String]) {
+    init(name: String, description: String, categories: [Category], members: [Member]) {
         self.name = name
         self.description = description
         self.isFavorite = false
-        //self.categories = categories
+        self.members = members
+        self.categories = categories
     }
 }

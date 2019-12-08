@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
     
@@ -23,11 +24,14 @@ class ViewController: UIViewController {
         title = "Cornell Clubs"
         view.backgroundColor = .white
         
-        let club1 = Club(name: "Club 1", description: "description of club 1fxghgkhlgsdhfjgkuhlgjfhgsdhfjgkhjhkgjfhdfjgkhlikujyhtdgrshdtjrytkuyilkutjryhtergtrjtukyiutjrhtgrsdhjtkuyil", categories: ["category 1", "category 2", "category 3"])
-        let club2 = Club(name: "Club 2", description: "description of club 2", categories: ["category 1", "category 2", "category 3"])
-        let club3 = Club(name: "Club 3", description: "description of club 3", categories: ["category 1", "category 2", "category 3"])
+//        let club1 = Club(name: "Club 1", description: "description of club 1fxghgkhlgsdhfjgkuhlgjfhgsdhfjgkhjhkgjfhdfjgkhlikujyhtdgrshdtjrytkuyilkutjryhtergtrjtukyiutjrhtgrsdhjtkuyil", categories: ["category 1", "category 2", "category 3"])
+//        let club2 = Club(name: "Club 2", description: "description of club 2", categories: ["category 1", "category 2", "category 3"])
+//        let club3 = Club(name: "Club 3", description: "description of club 3", categories: ["category 1", "category 2", "category 3"])
         
-        clubs = [club1, club2, club3]
+        
+        
+        
+        //clubs = [club1, club2, club3]
         
         //set up club layout for menu collection view
         let clubLayout = UICollectionViewFlowLayout()
@@ -45,6 +49,7 @@ class ViewController: UIViewController {
         view.addSubview(clubCollectionView)
         
         setupContraints()
+        getClubs()
     }
     
     func setupContraints() {
@@ -54,6 +59,10 @@ class ViewController: UIViewController {
             clubCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             clubCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
         ])
+    }
+    
+    func getClubs () {
+        NetworkManager.getClubs()
     }
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59FFB4C1BE0D2401E27BFD2F /* Pods_CornellClubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E12CC48E49AE1BFCC9D930 /* Pods_CornellClubs.framework */; };
 		6F39D9E02384E68800BB2579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9DF2384E68800BB2579 /* AppDelegate.swift */; };
 		6F39D9E42384E68800BB2579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9E32384E68800BB2579 /* ViewController.swift */; };
 		6F39D9E92384E68B00BB2579 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F39D9E82384E68B00BB2579 /* Assets.xcassets */; };
@@ -14,9 +15,15 @@
 		6F39D9F82384EF2B00BB2579 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9F72384EF2B00BB2579 /* Club.swift */; };
 		6F39D9FA2384EFBA00BB2579 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */; };
 		6F39D9FC2384F74D00BB2579 /* IndClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */; };
+		6FA0722C239AF422002B9D88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722B239AF422002B9D88 /* NetworkManager.swift */; };
+		6FA0722E239AF4C8002B9D88 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722D239AF4C8002B9D88 /* Member.swift */; };
+		6FA07230239AF532002B9D88 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722F239AF532002B9D88 /* Category.swift */; };
+		6FA07232239AF53F002B9D88 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA07231239AF53F002B9D88 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B9555A4539315B4C42B5760 /* Pods-CornellClubs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellClubs.release.xcconfig"; path = "Target Support Files/Pods-CornellClubs/Pods-CornellClubs.release.xcconfig"; sourceTree = "<group>"; };
+		5D1711EB867495156794F67D /* Pods-CornellClubs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellClubs.debug.xcconfig"; path = "Target Support Files/Pods-CornellClubs/Pods-CornellClubs.debug.xcconfig"; sourceTree = "<group>"; };
 		6F39D9DC2384E68800BB2579 /* CornellClubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornellClubs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F39D9DF2384E68800BB2579 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F39D9E32384E68800BB2579 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +33,11 @@
 		6F39D9F72384EF2B00BB2579 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndClubViewController.swift; sourceTree = "<group>"; };
+		6FA0722B239AF422002B9D88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		6FA0722D239AF4C8002B9D88 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		6FA0722F239AF532002B9D88 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		6FA07231239AF53F002B9D88 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		77E12CC48E49AE1BFCC9D930 /* Pods_CornellClubs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellClubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59FFB4C1BE0D2401E27BFD2F /* Pods_CornellClubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +57,8 @@
 			children = (
 				6F39D9DE2384E68800BB2579 /* CornellClubs */,
 				6F39D9DD2384E68800BB2579 /* Products */,
+				9B724CBB8DDEEC5C22F0ECE0 /* Pods */,
+				BF9213399676D2BC49956301 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,13 +76,35 @@
 				6F39D9DF2384E68800BB2579 /* AppDelegate.swift */,
 				6F39D9E32384E68800BB2579 /* ViewController.swift */,
 				6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */,
+				6FA0722B239AF422002B9D88 /* NetworkManager.swift */,
 				6F39D9F72384EF2B00BB2579 /* Club.swift */,
+				6FA0722D239AF4C8002B9D88 /* Member.swift */,
+				6FA07231239AF53F002B9D88 /* User.swift */,
+				6FA0722F239AF532002B9D88 /* Category.swift */,
 				6F39D9E82384E68B00BB2579 /* Assets.xcassets */,
 				6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */,
 				6F39D9EA2384E68B00BB2579 /* LaunchScreen.storyboard */,
 				6F39D9ED2384E68B00BB2579 /* Info.plist */,
 			);
 			path = CornellClubs;
+			sourceTree = "<group>";
+		};
+		9B724CBB8DDEEC5C22F0ECE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D1711EB867495156794F67D /* Pods-CornellClubs.debug.xcconfig */,
+				0B9555A4539315B4C42B5760 /* Pods-CornellClubs.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF9213399676D2BC49956301 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77E12CC48E49AE1BFCC9D930 /* Pods_CornellClubs.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +114,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F39D9F02384E68B00BB2579 /* Build configuration list for PBXNativeTarget "CornellClubs" */;
 			buildPhases = (
+				16929162A8CC28EEAE4A7EC9 /* [CP] Check Pods Manifest.lock */,
 				6F39D9D82384E68800BB2579 /* Sources */,
 				6F39D9D92384E68800BB2579 /* Frameworks */,
 				6F39D9DA2384E68800BB2579 /* Resources */,
+				CAE54B6E8E2257EC79855117 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,16 +174,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16929162A8CC28EEAE4A7EC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CornellClubs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAE54B6E8E2257EC79855117 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CornellClubs/Pods-CornellClubs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CornellClubs/Pods-CornellClubs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CornellClubs/Pods-CornellClubs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6F39D9D82384E68800BB2579 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA0722C239AF422002B9D88 /* NetworkManager.swift in Sources */,
 				6F39D9FA2384EFBA00BB2579 /* ClubCollectionViewCell.swift in Sources */,
 				6F39D9E42384E68800BB2579 /* ViewController.swift in Sources */,
 				6F39D9F82384EF2B00BB2579 /* Club.swift in Sources */,
 				6F39D9E02384E68800BB2579 /* AppDelegate.swift in Sources */,
+				6FA07232239AF53F002B9D88 /* User.swift in Sources */,
+				6FA0722E239AF4C8002B9D88 /* Member.swift in Sources */,
 				6F39D9FC2384F74D00BB2579 /* IndClubViewController.swift in Sources */,
+				6FA07230239AF532002B9D88 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +363,7 @@
 		};
 		6F39D9F12384E68B00BB2579 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D1711EB867495156794F67D /* Pods-CornellClubs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +381,7 @@
 		};
 		6F39D9F22384E68B00BB2579 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B9555A4539315B4C42B5760 /* Pods-CornellClubs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

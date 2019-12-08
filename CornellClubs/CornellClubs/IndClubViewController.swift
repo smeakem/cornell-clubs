@@ -12,14 +12,21 @@ class IndClubViewController: UIViewController {
     
     var nameLabel: UILabel!
     var nameText: String
+    
     var descriptionLabel: UILabel!
     var descriptionText: String
+    
     let padding: CGFloat = 10
     var isFavoriteText: String
     var isFavoriteButton: UIButton!
     var isFavorite: Bool
     var isFavoriteImage: UIImageView!
+    
     let heartImageLength: CGFloat = 50
+    
+    let categories: UILabel!
+    let categoriesText: String
+    let categoriesLabel: UILabel!
     
 
     override func viewDidLoad() {
