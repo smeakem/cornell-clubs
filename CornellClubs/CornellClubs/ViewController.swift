@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     let padding: CGFloat = 10
     
-    var clubs: [Club]!
+    var clubs: [Club] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,13 @@ class ViewController: UIViewController {
     }
     
     func getClubs () {
-        NetworkManager.getClubs()
+        NetworkManager.getClubs { (clubs) in
+            self.clubs = clubs
+            DispatchQueue.main.async {
+                self.clubCollectionView.reloadData()
+            }
+            
+        }
     }
 
 }

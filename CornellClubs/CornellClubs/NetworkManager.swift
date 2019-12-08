@@ -14,15 +14,23 @@ enum ExampleDataResponse<T: Any> {
     case failure(error: Error)
 }
 
-let endpoint = " http://35.227.43.197/api/clubs/"
+struct APIResponse<T: Codable>: Codable {
+    let success: Bool
+    let data: T
+}
+
+let endpoint = "http://35.227.43.197/api/clubs/"
 
 class NetworkManager {
-    static func getClubs() {
-        Alamofire.request(endpoint, method: .get).validate().responseJSON { (response) in
+    static func getClubs(completion: @escaping ([Club]) -> Void) {
+        Alamofire.request(endpoint, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                if let clubData = try? jsonDecoder.decode(<#T##self: JSONDecoder##JSONDecoder#>)
+                if let clubData = try? jsonDecoder.decode(APIResponse<[Club]>.self, from: data) {
+                    let clubs = clubData.data
+                    completion(clubs)
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
