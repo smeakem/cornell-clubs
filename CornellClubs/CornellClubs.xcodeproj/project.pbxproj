@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,9 +16,6 @@
 		6F39D9FA2384EFBA00BB2579 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */; };
 		6F39D9FC2384F74D00BB2579 /* IndClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */; };
 		6FA0722C239AF422002B9D88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722B239AF422002B9D88 /* NetworkManager.swift */; };
-		6FA0722E239AF4C8002B9D88 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722D239AF4C8002B9D88 /* Member.swift */; };
-		6FA07230239AF532002B9D88 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722F239AF532002B9D88 /* Category.swift */; };
-		6FA07232239AF53F002B9D88 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA07231239AF53F002B9D88 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +31,6 @@
 		6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndClubViewController.swift; sourceTree = "<group>"; };
 		6FA0722B239AF422002B9D88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		6FA0722D239AF4C8002B9D88 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
-		6FA0722F239AF532002B9D88 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		6FA07231239AF53F002B9D88 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		77E12CC48E49AE1BFCC9D930 /* Pods_CornellClubs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellClubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,9 +72,6 @@
 				6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */,
 				6FA0722B239AF422002B9D88 /* NetworkManager.swift */,
 				6F39D9F72384EF2B00BB2579 /* Club.swift */,
-				6FA0722D239AF4C8002B9D88 /* Member.swift */,
-				6FA07231239AF53F002B9D88 /* User.swift */,
-				6FA0722F239AF532002B9D88 /* Category.swift */,
 				6F39D9E82384E68B00BB2579 /* Assets.xcassets */,
 				6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */,
 				6F39D9EA2384E68B00BB2579 /* LaunchScreen.storyboard */,
@@ -95,7 +86,6 @@
 				5D1711EB867495156794F67D /* Pods-CornellClubs.debug.xcconfig */,
 				0B9555A4539315B4C42B5760 /* Pods-CornellClubs.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -226,10 +216,7 @@
 				6F39D9E42384E68800BB2579 /* ViewController.swift in Sources */,
 				6F39D9F82384EF2B00BB2579 /* Club.swift in Sources */,
 				6F39D9E02384E68800BB2579 /* AppDelegate.swift in Sources */,
-				6FA07232239AF53F002B9D88 /* User.swift in Sources */,
-				6FA0722E239AF4C8002B9D88 /* Member.swift in Sources */,
 				6F39D9FC2384F74D00BB2579 /* IndClubViewController.swift in Sources */,
-				6FA07230239AF532002B9D88 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

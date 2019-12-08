@@ -24,9 +24,9 @@ class IndClubViewController: UIViewController {
     
     let heartImageLength: CGFloat = 50
     
-    let categories: UILabel!
-    let categoriesText: String
-    let categoriesLabel: UILabel!
+    var categories: UILabel!
+    var categoriesText: String!
+    var categoriesLabel: UILabel!
     
 
     override func viewDidLoad() {

@@ -21,7 +21,8 @@ class NetworkManager {
         Alamofire.request(endpoint, method: .get).validate().responseJSON { (response) in
             switch response.result {
             case .success(let data):
-                print(data)
+                let jsonDecoder = JSONDecoder()
+                if let clubData = try? jsonDecoder.decode(<#T##self: JSONDecoder##JSONDecoder#>)
             case .failure(let error):
                 print(error.localizedDescription)
             }
