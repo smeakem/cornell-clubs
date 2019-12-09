@@ -16,6 +16,7 @@
 		6F39D9FA2384EFBA00BB2579 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */; };
 		6F39D9FC2384F74D00BB2579 /* IndClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */; };
 		6FA0722C239AF422002B9D88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0722B239AF422002B9D88 /* NetworkManager.swift */; };
+		6FA07234239DCB88002B9D88 /* AddClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA07233239DCB88002B9D88 /* AddClubViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		6F39D9F92384EFBA00BB2579 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndClubViewController.swift; sourceTree = "<group>"; };
 		6FA0722B239AF422002B9D88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		6FA07233239DCB88002B9D88 /* AddClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubViewController.swift; sourceTree = "<group>"; };
 		77E12CC48E49AE1BFCC9D930 /* Pods_CornellClubs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellClubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				6F39D9DF2384E68800BB2579 /* AppDelegate.swift */,
 				6F39D9E32384E68800BB2579 /* ViewController.swift */,
 				6F39D9FB2384F74D00BB2579 /* IndClubViewController.swift */,
+				6FA07233239DCB88002B9D88 /* AddClubViewController.swift */,
 				6FA0722B239AF422002B9D88 /* NetworkManager.swift */,
 				6F39D9F72384EF2B00BB2579 /* Club.swift */,
 				6F39D9E82384E68B00BB2579 /* Assets.xcassets */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA0722C239AF422002B9D88 /* NetworkManager.swift in Sources */,
+				6FA07234239DCB88002B9D88 /* AddClubViewController.swift in Sources */,
 				6F39D9FA2384EFBA00BB2579 /* ClubCollectionViewCell.swift in Sources */,
 				6F39D9E42384E68800BB2579 /* ViewController.swift in Sources */,
 				6F39D9F82384EF2B00BB2579 /* Club.swift in Sources */,

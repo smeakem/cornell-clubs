@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var clubCollectionView: UICollectionView!
     let clubCellReuseIdentifier = "clubCellReuseIdentifier"
     
+    var addNewButton: UIButton!
+    
     let padding: CGFloat = 10
     
     var clubs: [Club] = []
@@ -48,16 +50,29 @@ class ViewController: UIViewController {
         clubCollectionView.delegate = self
         view.addSubview(clubCollectionView)
         
+        //initialize button
+        addNewButton = UIButton()
+        addNewButton.setTitle("Add New Club", for: .normal)
+        addNewButton.setTitleColor(.black, for: .normal)
+        addNewButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(addNewButton)
+        
         setupContraints()
         getClubs()
     }
     
     func setupContraints() {
         NSLayoutConstraint.activate([
-            clubCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            clubCollectionView.topAnchor.constraint(equalTo: addNewButton.bottomAnchor, constant: padding*2),
             clubCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             clubCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             clubCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+        ])
+        NSLayoutConstraint.activate([
+            addNewButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            addNewButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            addNewButton.heightAnchor.constraint(equalToConstant: 35),
+            addNewButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: padding)
         ])
     }
     
