@@ -28,6 +28,8 @@ class IndClubViewController: UIViewController {
     var categoriesText: String!
     var categoriesLabel: UILabel!
     
+    var clubID: Int!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +56,16 @@ class IndClubViewController: UIViewController {
         isFavoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
         view.addSubview(isFavoriteButton)
         
-//        isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
-//        isFavoriteImage.contentMode = .scaleAspectFit
-//        if (isFavorite) {
-//            isFavoriteImage.isHidden = false
-//        }
-//        else {
-//            isFavoriteImage.isHidden = true
-//        }
-//        isFavoriteImage.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(isFavoriteImage)
+        isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
+        isFavoriteImage.contentMode = .scaleAspectFit
+        if (isFavorite) {
+            isFavoriteImage.isHidden = false
+        }
+        else {
+            isFavoriteImage.isHidden = true
+        }
+        isFavoriteImage.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(isFavoriteImage)
         
         setupConstraints()
     }
@@ -72,13 +74,14 @@ class IndClubViewController: UIViewController {
         nameText = club.name
         descriptionText = club.description
 //        if (club.isFavorite) {
-            isFavorite = true
-            isFavoriteText = "Unfavorite"
+            isFavorite = false
+            isFavoriteText = "Favorite"
 //        }
 //        else {
 //            isFavorite = false
 //            isFavoriteText = "Favorite"
 //        }
+        clubID = club.id
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -99,12 +102,12 @@ class IndClubViewController: UIViewController {
             isFavoriteButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30),
             isFavoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-//        NSLayoutConstraint.activate([
-//            isFavoriteImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-//            isFavoriteImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
-//            isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
-//            isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
-//        ])
+        NSLayoutConstraint.activate([
+            isFavoriteImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            isFavoriteImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
+            isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
+            isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
+        ])
         
 //            heartImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 //            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
@@ -114,15 +117,32 @@ class IndClubViewController: UIViewController {
     @objc func favoriteButtonPressed() {
         if (isFavorite) {
             isFavorite = false
-            isFavoriteText = "Favorite"
+            //isFavoriteText = "Favorite"
+            isFavoriteButton.setTitle("Favorite", for: .normal)
             isFavoriteImage.isHidden = true
+            NetworkManager.unfavoriteClub(id: clubID) { (clubs) in
+            }
         }
         else {
             isFavorite = true
-            isFavoriteText = "Unfavorite"
+//            isFavoriteText = "Unfavorite"
+            isFavoriteButton.setTitle("Unfavorite", for: .normal)
             isFavoriteImage.isHidden = false
+            NetworkManager.favoriteClub(id: clubID) { (clubs) in
+            }
         }
         
     }
     
 }
+
+
+//func getClubs () {
+//    NetworkManager.getClubs { (clubs) in
+//        self.clubs = clubs
+//        DispatchQueue.main.async {
+//            self.clubCollectionView.reloadData()
+//        }
+//
+//    }
+//}
