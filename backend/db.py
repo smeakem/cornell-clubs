@@ -53,7 +53,7 @@ class Category(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'name': self.name,
+            'name': self.name
         }
 
 class Member(db.Model):
@@ -64,7 +64,6 @@ class Member(db.Model):
 
     def __init__(self, **kwargs):
         self.name = kwargs.get('name', '')
-        self.favorites = []
 
     def serialize(self):
         return {
