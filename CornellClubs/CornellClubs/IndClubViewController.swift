@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DeleteClubViewControllerDelegate: class {
+    func willBeDismissed()
+}
+
 class IndClubViewController: UIViewController {
     
     var nameLabel: UILabel!
@@ -28,7 +32,12 @@ class IndClubViewController: UIViewController {
     var categoriesText: String!
     var categoriesLabel: UILabel!
     
+    var deleteButton: UIButton!
+    
     var clubID: Int!
+    
+    weak var delegate: DeleteClubViewControllerDelegate?
+
     
 
     override func viewDidLoad() {
@@ -44,6 +53,8 @@ class IndClubViewController: UIViewController {
         
         descriptionLabel = UILabel()
         descriptionLabel.text = descriptionText
+        descriptionLabel.sizeToFit()
+        descriptionLabel.adjustsFontSizeToFitWidth = true
         descriptionLabel.textColor = .black
         descriptionLabel.font = descriptionLabel.font.withSize(20)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +66,13 @@ class IndClubViewController: UIViewController {
         isFavoriteButton.translatesAutoresizingMaskIntoConstraints = false
         isFavoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
         view.addSubview(isFavoriteButton)
+        
+        deleteButton = UIButton()
+        deleteButton.setTitleColor(.black, for: .normal)
+        deleteButton.setTitle("Delete this Club", for: .normal)
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+        view.addSubview(deleteButton)
         
         isFavoriteImage = UIImageView(image: UIImage(named: "heart"))
         isFavoriteImage.contentMode = .scaleAspectFit
@@ -73,14 +91,8 @@ class IndClubViewController: UIViewController {
     init(club: Club) {
         nameText = club.name
         descriptionText = club.description
-//        if (club.isFavorite) {
-            isFavorite = false
-            isFavoriteText = "Favorite"
-//        }
-//        else {
-//            isFavorite = false
-//            isFavoriteText = "Favorite"
-//        }
+        isFavorite = false
+        isFavoriteText = "Favorite"
         clubID = club.id
         super.init(nibName: nil, bundle: nil)
     }
@@ -96,7 +108,8 @@ class IndClubViewController: UIViewController {
         ])
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
-            descriptionLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: padding)
+            descriptionLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: padding),
+            descriptionLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: padding)
         ])
         NSLayoutConstraint.activate([
             isFavoriteButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30),
@@ -108,9 +121,11 @@ class IndClubViewController: UIViewController {
             isFavoriteImage.widthAnchor.constraint(equalToConstant: heartImageLength),
             isFavoriteImage.heightAnchor.constraint(equalToConstant: heartImageLength)
         ])
-        
-//            heartImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-//            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        NSLayoutConstraint.activate([
+            deleteButton.topAnchor.constraint(equalTo: isFavoriteButton.bottomAnchor, constant: padding),
+            deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            deleteButton.heightAnchor.constraint(equalToConstant: padding)
+        ])
         
     }
     
@@ -125,7 +140,6 @@ class IndClubViewController: UIViewController {
         }
         else {
             isFavorite = true
-//            isFavoriteText = "Unfavorite"
             isFavoriteButton.setTitle("Unfavorite", for: .normal)
             isFavoriteImage.isHidden = false
             NetworkManager.favoriteClub(id: clubID) { (clubs) in
@@ -134,15 +148,13 @@ class IndClubViewController: UIViewController {
         
     }
     
+    @objc func deleteButtonPressed() {
+        NetworkManager.deleteClub(id: clubID, completion: { (club) in
+            DispatchQueue.main.async {
+                self.delegate?.willBeDismissed()
+                self.dismiss(animated: true)
+            }
+        })
+    }
+    
 }
-
-
-//func getClubs () {
-//    NetworkManager.getClubs { (clubs) in
-//        self.clubs = clubs
-//        DispatchQueue.main.async {
-//            self.clubCollectionView.reloadData()
-//        }
-//
-//    }
-//}

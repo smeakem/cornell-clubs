@@ -26,15 +26,6 @@ class ViewController: UIViewController {
         title = "Cornell Clubs"
         view.backgroundColor = .white
         
-//        let club1 = Club(name: "Club 1", description: "description of club 1fxghgkhlgsdhfjgkuhlgjfhgsdhfjgkhjhkgjfhdfjgkhlikujyhtdgrshdtjrytkuyilkutjryhtergtrjtukyiutjrhtgrsdhjtkuyil", categories: ["category 1", "category 2", "category 3"])
-//        let club2 = Club(name: "Club 2", description: "description of club 2", categories: ["category 1", "category 2", "category 3"])
-//        let club3 = Club(name: "Club 3", description: "description of club 3", categories: ["category 1", "category 2", "category 3"])
-        
-        
-        
-        
-        //clubs = [club1, club2, club3]
-        
         //set up club layout for menu collection view
         let clubLayout = UICollectionViewFlowLayout()
         clubLayout.scrollDirection = .vertical
@@ -55,6 +46,7 @@ class ViewController: UIViewController {
         addNewButton.setTitle("Add New Club", for: .normal)
         addNewButton.setTitleColor(.black, for: .normal)
         addNewButton.translatesAutoresizingMaskIntoConstraints = false
+        addNewButton.addTarget(self, action: #selector(addButton), for: .touchUpInside)
         view.addSubview(addNewButton)
         
         setupContraints()
@@ -85,6 +77,12 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    @objc func addButton() {
+        let viewContrtoller = AddClubViewController()
+        viewContrtoller.delegate = self
+        present(viewContrtoller, animated: true, completion: nil)
+    }
 
 }
 
@@ -111,6 +109,15 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let club = clubs[indexPath.row]
         let viewController = IndClubViewController(club: club)
+        viewController.delegate = self
         present(viewController, animated: true, completion: nil)
     }
+}
+
+extension ViewController: AddClubViewControllerDelegate, DeleteClubViewControllerDelegate {
+    
+    func willBeDismissed() {
+        getClubs()
+    }
+    
 }

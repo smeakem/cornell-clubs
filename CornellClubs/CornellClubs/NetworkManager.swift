@@ -20,11 +20,12 @@ struct APIResponse<T: Codable>: Codable {
 }
 
 let endpointGetClubs = "http://35.227.43.197/api/clubs/"
-let endpointCreateClub = "http://35.227.43.197/api/clubs"
+let endpointCreateClub = "http://35.227.43.197/api/clubs/"
 let endpointFavoriteClub1 = "http://35.227.43.197/api/club/"
 let endpointFavoriteClub2 = "/favorite/1/"
 let endpointUnfavoriteClub1 = "http://35.227.43.197/api/club/"
 let endpointUnfavoriteClub2 = "/unfavorite/1/"
+let endpointDeleteClub = "http://35.227.43.197/api/club/"
 
 class NetworkManager {
     
@@ -43,15 +44,15 @@ class NetworkManager {
         }
     }
     
-    static func createClub(name: String, description: String, completion: @escaping ([Club]) -> Void) {
+    static func createClub(name: String, description: String, completion: @escaping (Club) -> Void) {
         let parameters = ["name": name, "description": description]
         Alamofire.request(endpointCreateClub, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData {response in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                if let clubData = try? jsonDecoder.decode(APIResponse<[Club]>.self, from: data) {
-                    let clubs = clubData.data
-                    completion(clubs)
+                if let clubData = try? jsonDecoder.decode(APIResponse<Club>.self, from: data) {
+                    let club = clubData.data
+                    completion(club)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -84,6 +85,22 @@ class NetworkManager {
                 if let clubData = try? jsonDecoder.decode(APIResponse<[Club]>.self, from: data) {
                     let clubs = clubData.data
                     completion(clubs)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func deleteClub(id: Int, completion: @escaping (Club) -> Void) {
+        let newEndpoint = endpointDeleteClub + String(id) + "/"
+        Alamofire.request(newEndpoint, method: .delete).validate().responseData { (response) in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let clubData = try? jsonDecoder.decode(APIResponse<Club>.self, from: data) {
+                    let club = clubData.data
+                    completion(club)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
